@@ -59,13 +59,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Sign backend image
-        run: |
-          cosign sign --key env://COSIGN_PRIVATE_KEY ${TAGS}
-        env:
-          TAGS: ${{ steps.meta-backend.outputs.tags }}
-          COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
-          COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
+      # - name: Sign backend image
+      #   run: |
+      #     cosign sign --key env://COSIGN_PRIVATE_KEY ${TAGS}
+      #   env:
+      #     TAGS: ${{ steps.meta-backend.outputs.tags }}
+      #     COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
+      #     COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
 
       # Frontend Container Image
         ## Extract metadata (tags, labels) for Docker
@@ -87,10 +87,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Sign frontend image
-        run: |
-          cosign sign --key env://COSIGN_PRIVATE_KEY ${TAGS}
-        env:
-          TAGS: ${{ steps.meta-frontend.outputs.tags }}
-          COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
-          COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
+      # - name: Sign frontend image
+      #   run: |
+      #     cosign sign --key env://COSIGN_PRIVATE_KEY ${TAGS}
+      #   env:
+      #     TAGS: ${{ steps.meta-frontend.outputs.tags }}
+      #     COSIGN_PRIVATE_KEY: ${{secrets.COSIGN_PRIVATE_KEY}}
+      #     COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
